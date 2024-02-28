@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import NoImageSelected from "../../assets/no-image-selected.jpg";
 
 function createBook() {
-
   const serverUrl = import.meta.env.VITE_SERVER_URL
   const baseUrl = `${serverUrl}/api/books`;
-
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [stars, setStars] = useState(0);
@@ -28,7 +26,7 @@ function createBook() {
     formData.append("thumbnail", thumbnail);
 
     try {
-        const response = await fetch(`${baseUrl}/api/books`, {
+        const response = await fetch(`${baseUrl}`, {
           method: "POST",
           body: formData,
         });
@@ -81,8 +79,8 @@ function createBook() {
       ) : (
         <form className="bookdetails" onSubmit={createBook}>
           <div className="col-1">
-            <label>Upload Thumbnail</label>
-            <img src={image} alt="preview image" />
+          
+            <img className="img-single-book"  src={image} alt="preview image" />
             <input
               onChange={onImageChange}
               type="file"

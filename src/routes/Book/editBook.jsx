@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function EditBook() {
-  const serverUrl = import.meta.env.VITE_SERVER_URL
- 
+  const serverUrl = import.meta.env.VITE_SERVER_URL 
   const navigate = useNavigate();
   const urlSlug = useParams();
   const baseUrl = `${serverUrl}/api/books/${urlSlug.slug}`;
@@ -125,14 +124,13 @@ function EditBook() {
       ) : (
         <form className="bookdetails" onSubmit={createBook}>
           <div className="col-1">
-            <label>Upload Thumbnail</label>
-
+            
             {image ? (
               <img className="img-single-book" src={`${image}`} alt="preview image" />
             ) : (
               <img
               className="img-single-book" 
-                src={`${baseUrl}/uploads/${thumbnail}`}
+                src={`${serverUrl}/uploads/${thumbnail}`}
                 alt="preview image"
               />
             )}
@@ -189,7 +187,7 @@ function EditBook() {
               />
             </div>
 
-            <input type="submit" />
+            <input type="submit" value="Upload Book"/>
           </div>
         </form>
       )}
