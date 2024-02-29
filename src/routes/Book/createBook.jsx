@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import NoImageSelected from "../../assets/no-image-selected.jpg";
 
 function createBook() {
-  const serverUrl = import.meta.env.VITE_SERVER_URL
-  const baseUrl = `${serverUrl}/api/books`;
+  const serverUrl = import.meta.env.VITE_SERVER_URL;
+  
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [stars, setStars] = useState(0);
@@ -26,22 +26,22 @@ function createBook() {
     formData.append("thumbnail", thumbnail);
 
     try {
-        const response = await fetch(`${baseUrl}`, {
-          method: "POST",
-          body: formData,
-        });
+      const response = await fetch(`${serverUrl}/api/books`, {
+        method: "POST",
+        body: formData,
+      });
 
-    //   const response = await fetch("http://localhost:8000/api/books", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       title: title,
-    //       slug: slug,
-    //       stars: stars,
-    //       description: description,
-    //       category: categories,
-    //     }),
-    //   });
+      //   const response = await fetch("http://localhost:8000/api/books", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       title: title,
+      //       slug: slug,
+      //       stars: stars,
+      //       description: description,
+      //       category: categories,
+      //     }),
+      //   });
 
       if (response.ok) {
         setTitle("");
@@ -79,8 +79,7 @@ function createBook() {
       ) : (
         <form className="bookdetails" onSubmit={createBook}>
           <div className="col-1">
-          
-            <img className="img-single-book"  src={image} alt="preview image" />
+            <img className="img-single-book" src={image} alt="preview image" />
             <input
               onChange={onImageChange}
               type="file"

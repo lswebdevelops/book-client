@@ -44,7 +44,7 @@ function SingleBook() {
 
       <div className="bookdetails">
         <div className="col-1">
-            <img className="img-single-book" src={`${serverUrl}/uploads/${data.thumbnail}`} alt={data.title} />
+            <img className="img-single-book" src={`${serverUrl}/uploads/${data?.thumbnail}`} alt={data?.title} />
             <hr />
             <Link to={`/editbook/${data.slug}`}>Edit/Delete</Link>
         </div>
